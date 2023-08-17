@@ -25,6 +25,8 @@ const { isAuth, sanitizeUser, cookieExtractor } = require("./services/common");
 const path = require("path");
 const { Order } = require("./model/Order");
 
+// send mail with defined transport object
+
 // Webhook
 // TODO: we will capture actual order after deploying out server live on public URL
 const endpointSecret = process.env.ENDPOINT_SECRET;
@@ -96,6 +98,7 @@ server.use("/users", isAuth(), usersRouter.router);
 server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), ordersRouter.router);
+
 // this line we add to make react router work in case of other routes doesnt match
 server.get("*", (req, res) =>
   res.sendFile(path.resolve("build", "index.html"))

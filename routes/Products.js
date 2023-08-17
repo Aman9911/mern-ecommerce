@@ -5,6 +5,7 @@ const {
   fetchProductById,
   updateProduct,
 } = require("../controller/Product");
+const { Product } = require("../model/Product");
 
 const router = express.Router();
 
